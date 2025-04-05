@@ -1,0 +1,144 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B4DBC6C9-49FC-13BF-057B-A47DC819DB8A" name="RESERVA">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 20:48:02 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="reserva_id" id="2A5F463F-2CCC-11E3-D4B9-46D7AE91CD6A">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 20:50:06 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>6</dataTypeSize>
+<ownDataTypeParameters>6,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="hotel_id" id="6BF3FC6F-3C3F-62E5-6FCE-FBF85B5A55E3">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 21:41:05 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="46A4772B-569A-6578-9A16-8FA2E09A8BBC" referredColumn="77CB127E-58B7-7FBE-848A-8EF24E85AC69"/>
+</associations>
+</Column>
+<Column name="cliente_id" id="959BCD7F-07F7-E52C-622D-D04604A91216">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 21:33:32 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="59745F34-A069-2F39-5B09-6A24D2E21F2C" referredColumn="C000667F-8AFD-8345-AC3C-6FADA5562E2F"/>
+</associations>
+</Column>
+<Column name="habitacion_id" id="0550BEC3-A6DC-8FDE-1D4B-74BB1CD4B1DB">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 21:29:47 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>6</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3FD2AACC-7759-7F20-8CD4-74BE8A5F9892" referredColumn="94BAC9A8-5E68-9B07-492D-976FE4A8CFC3"/>
+</associations>
+</Column>
+<Column name="fecha_entrada" id="36DFAF86-B255-CA29-1042-D9D791ECAB62">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 21:22:28 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_salida" id="2EBA6080-DEAF-6169-2D08-290A0310FD4F">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 21:22:28 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cantidad_personas" id="EBF940A9-0E85-75D4-D551-D47AEA5E2956">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 21:23:18 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DABEEE95-C0F6-ABBA-A41B-7503DF39031B" name="RESERVA_PK">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 20:50:06 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2A5F463F-2CCC-11E3-D4B9-46D7AE91CD6A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7ED38749-7857-0E67-9E91-94F033CF477E" name="HABITACION_FK">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 21:29:47 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0550BEC3-A6DC-8FDE-1D4B-74BB1CD4B1DB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B13B1063-966F-BB50-18FD-887371027959" name="CLIENTE_FK">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 21:33:32 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="959BCD7F-07F7-E52C-622D-D04604A91216"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="371F2B9C-2FED-8187-9395-11B545D1C6E7" name="HOTEL_FK">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-05 21:41:05 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6BF3FC6F-3C3F-62E5-6FCE-FBF85B5A55E3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
