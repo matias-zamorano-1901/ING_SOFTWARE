@@ -1,0 +1,106 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B17CEAEF-314A-55A3-18B3-F7FC3925798F" name="HABITACION">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>38CE3AEE-0ACA-34EB-B9C5-397587A8924A</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="habitacion id" id="28749145-782E-36FC-B18A-45255BBA4A5B">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>94BAC9A8-5E68-9B07-492D-976FE4A8CFC3</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>6</dataTypeSize>
+<ownDataTypeParameters>6,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="hotel id" id="638B7BEF-5E58-5F51-B52F-90AD01113E4E">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>EFBE3CB0-E699-2592-1F46-1D18789195B3</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<referedAttribute>FD94CE9D-2D64-A69B-2BDE-1786CD3A2433</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tipo" id="0C22FCE8-BD82-EB17-1630-D2755B947207">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>D01DB94F-E7C7-3A78-460A-89E845FCB344</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="capacidad" id="B005A47E-8FEA-881A-6322-461BD28F22C0">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>F0AA62C3-0C27-6E1D-6574-BA1E194FDB6C</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="precio" id="250591A7-64F1-5023-7CC7-683F95FEF3BE">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>1C007763-3684-1102-E8AC-D3E0AA4C11A8</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>6</dataTypeSize>
+<ownDataTypeParameters>6,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8997CC36-B497-AEF7-DDC7-43A368DCE601" name="HABITACION PK">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>89A9B3C2-620F-1E21-393F-9C53110E3C35</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>28749145-782E-36FC-B18A-45255BBA4A5B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

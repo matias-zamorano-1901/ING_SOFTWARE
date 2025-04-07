@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F861C2D6-847E-7F89-C392-4EA700A7A0F0" name="HOTEL">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>DCAFFB2F-04C9-44C5-B88E-2A9EC2581EAB</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="hotel id" id="FD94CE9D-2D64-A69B-2BDE-1786CD3A2433">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>77CB127E-58B7-7FBE-848A-8EF24E85AC69</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name hotel" id="62682B37-163D-9B0F-A757-217AA7BFC6F6">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>1AF4BCC7-670B-C8EF-BD8F-CB2AACF7CA60</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ciudad" id="786414D6-A801-B472-59B9-A64AA48FAFE4">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>EEFE9626-A8D3-C6E6-28DC-649BE88AC1E4</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="categoria" id="49F2B322-47D7-408F-3271-CE5B15CBFC19">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>5C925C65-674F-2629-82A1-276D2C080D93</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="telefono hotel" id="79CFAECA-5045-353F-87B1-F8FA7D0AB9C9">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>F3E21F72-83F9-24E8-B0CA-380FC5E779E9</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>11</dataTypeSize>
+<ownDataTypeParameters>11,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="7B5C991A-2240-4BC1-1020-AAAC1A109665" name="HOTEL PK">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>1FF3C35D-AB4D-F879-0F0C-DB5C41FDBCEF</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>FD94CE9D-2D64-A69B-2BDE-1786CD3A2433</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

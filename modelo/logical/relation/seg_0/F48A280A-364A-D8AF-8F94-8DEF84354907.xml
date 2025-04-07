@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="HOTEL_FK" directorySegmentName="seg_0" id="F48A280A-364A-D8AF-8F94-8DEF84354907">
+<createdBy>dark_</createdBy>
+<createdTime>2025-04-07 05:10:51 UTC</createdTime>
+<generatorID>46A4772B-569A-6578-9A16-8FA2E09A8BBC</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="3F35DE2B-AEBD-89AD-6550-F8AB56A61346" value="true"/>
+</engineerTo>
+<sourcePk>7B5C991A-2240-4BC1-1020-AAAC1A109665</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>F861C2D6-847E-7F89-C392-4EA700A7A0F0</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>D7C5DFD9-DB39-623C-692A-62B1B72C97B3</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
