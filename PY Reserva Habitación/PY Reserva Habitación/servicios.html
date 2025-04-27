@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Hotel Pacific Reef</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2a5f8a;
+            --secondary-color: #e8b56b;
+            --dark-color: #1a2a3a;
+            --light-color: #f8f9fa;
+            --accent-color: #4db8a8;
+            --text-color: #333;
+            --text-light: #777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .header-content {
+            padding: 10px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo h1 {
+            font-size: 1.3rem;
+        }
+
+        .logo span {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary-color);
+            color: white;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled + nav {
+            top: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover, .nav-links a[aria-current="page"] {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--secondary-color);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #d9a257;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(232, 181, 107, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-white {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline-white:hover {
+            background-color: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 5px;
+        }
+
+        .language-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .language-btn.active {
+            color: var(--primary-color);
+            background-color: rgba(42, 95, 138, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-top: 140px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(26, 42, 58, 0.7), rgba(26, 42, 58, 0.3));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .service-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-img {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-title {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .service-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            margin-bottom: 25px;
+            list-style: none;
+        }
+
+        .service-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+        }
+
+        .service-features i {
+            color: var(--accent-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Additional Services */
+        .additional-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-item i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .service-item:hover i {
+            color: var(--accent-color);
+        }
+
+        .service-item h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .service-item p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Activities */
+        .activities-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .activity-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .activity-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .activity-card-content {
+            padding: 20px;
+        }
+
+        .activity-category {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .activity-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .activity-card p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .activity-price {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        /* Auth Modal */
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-tab.active {
+            border-bottom-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .auth-form {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(42, 95, 138, 0.2);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .form-footer a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .footer-column ul li:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-column ul li i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero {
+                height: 50vh;
+                margin-top: 120px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+
+            .service-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-img {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 10px 0;
+            }
+            
+            .auth-buttons {
+                width: 100%;
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav {
+                top: 70px;
+            }
+            
+            header.scrolled + nav {
+                top: 60px;
+            }
+            
+            .hero {
+                height: 40vh;
+                margin-top: 140px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .logo {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            nav {
+                top: 130px;
+            }
+            
+            header.scrolled + nav {
+                top: 80px;
+            }
+            
+            .hero {
+                margin-top: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo" itemscope itemtype="https://schema.org/Hotel">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="Hotel Pacific Reef Logo" itemprop="logo">
+                <div>
+                    <h1 itemprop="name">Hotel Pacific Reef</h1>
+                    <span itemprop="description">Un paraíso en la costa</span>
+                </div>
+            </div>
+            <div class="language-switcher" aria-label="Selector de idioma">
+                <button class="language-btn active" aria-label="Español" lang="es">ES</button>
+                <button class="language-btn" aria-label="English" lang="en">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav role="navigation" aria-label="Menú principal">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="habitaciones.html">Habitaciones</a></li>
+                <li><a href="servicios.html" aria-current="page">Servicios</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline-white" id="loginBtn" aria-label="Iniciar sesión">Iniciar Sesión</button>
+                    <button class="btn btn-primary" id="registerBtn" aria-label="Registrarse">Registrarse</button>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="hero" role="region" aria-label="Servicios del hotel">
+        <div class="container hero-content">
+            <h2>Nuestros Servicios</h2>
+            <p>Descubre todo lo que Hotel Pacific Reef tiene para ofrecerte para hacer de tu estadía una experiencia inolvidable.</p>
+            <button class="btn btn-primary">Explorar más</button>
+        </div>
+    </section>
+
+    <!-- Sección de servicios principales -->
+    <main class="container">
+        <section class="section" aria-labelledby="servicios-principales">
+            <header class="section-title">
+                <h2 id="servicios-principales">Servicios Principales</h2>
+                <p>Disfruta de nuestros exclusivos servicios diseñados para tu comodidad y disfrute.</p>
+            </header>
+            
+            <div class="services-container">
+                <!-- Tarjeta de servicio 1 -->
+                <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Restaurante Oceánico" itemprop="image">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title" itemprop="name">Restaurante Oceánico</h3>
+                        <p class="service-description" itemprop="description">
+                            Nuestro restaurante ofrece una experiencia gastronómica única con los más frescos ingredientes 
+                            locales y una impresionante vista al mar. Disfruta de desayunos buffet, almuerzos a la carta 
+                            y cenas temáticas durante tu estadía.
+                        </p>
+                        <ul class="service-features">
+                            <li itemprop="hoursAvailable" itemscope itemtype="https://schema.org/OpeningHoursSpecification">
+                                <i class="fas fa-clock" aria-hidden="true"></i> 
+                                <span itemprop="opens">06:30</span> - <span itemprop="closes">23:00</span>
+                            </li>
+                            <li><i class="fas fa-utensils" aria-hidden="true"></i> Cocina internacional y local</li>
+                            <li><i class="fas fa-child" aria-hidden="true"></i> Menú infantil disponible</li>
+                            <li><i class="fas fa-wine-glass-alt" aria-hidden="true"></i> Bar con cócteles exclusivos</li>
+                        </ul>
+                        <button class="btn btn-outline" aria-label="Ver menú del restaurante">Ver menú</button>
+                    </div>
+                </article>
+                
+                <!-- Tarjeta de servicio 2 -->
+                <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Spa & Bienestar" itemprop="image">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title" itemprop="name">Spa & Bienestar</h3>
+                        <p class="service-description" itemprop="description">
+                            Relájate y rejuvenece en nuestro exclusivo spa con tratamientos inspirados en tradiciones 
+                            locales y técnicas modernas. Ofrecemos masajes, terapias faciales, baños de vapor y mucho más 
+                            en un ambiente de tranquilidad absoluta.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-spa" aria-hidden="true"></i> Tratamientos personalizados</li>
+                            <li><i class="fas fa-hot-tub" aria-hidden="true"></i> Jacuzzi y sauna</li>
+                            <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> Reservaciones recomendadas</li>
+                            <li><i class="fas fa-percentage" aria-hidden="true"></i> Descuentos para huéspedes</li>
+                        </ul>
+                        <button class="btn btn-outline" aria-label="Ver tratamientos del spa">Ver tratamientos</button>
+                    </div>
+                </article>
+                
+                <!-- Tarjeta de servicio 3 -->
+                <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Piscina Infinity" itemprop="image">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title" itemprop="name">Piscina Infinity</h3>
+                        <p class="service-description" itemprop="description">
+                            Nuestra espectacular piscina infinity con vista al océano es el lugar perfecto para refrescarse 
+                            y disfrutar del clima tropical. Con áreas de descanso exclusivas y servicio de bebidas, es el 
+                            lugar ideal para relajarse.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-swimming-pool" aria-hidden="true"></i> Piscina climatizada</li>
+                            <li><i class="fas fa-umbrella-beach" aria-hidden="true"></i> Camarotes privados</li>
+                            <li><i class="fas fa-cocktail" aria-hidden="true"></i> Servicio de bar en piscina</li>
+                            <li><i class="fas fa-lifering" aria-hidden="true"></i> Supervisión de salvavidas</li>
+                        </ul>
+                        <button class="btn btn-outline" aria-label="Ver horarios de la piscina">Ver horarios</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sección de servicios adicionales -->
+        <section class="section" style="background-color: #f9f9f9;" aria-labelledby="servicios-adicionales">
+            <header class="section-title">
+                <h2 id="servicios-adicionales">Servicios Adicionales</h2>
+                <p>Todos estos servicios están disponibles para hacer tu estadía más cómoda y placentera.</p>
+            </header>
+            
+            <div class="additional-services">
+                <!-- Servicio adicional 1 -->
+                <article class="service-item" itemscope itemtype="https://schema.org/Service">
+                    <div aria-hidden="true">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3 itemprop="name">Servicio a la Habitación</h3>
+                    <p itemprop="description">Disfruta de deliciosos platillos en la comodidad de tu habitación, disponible las 24 horas.</p>
+                </article>
+                
+                <!-- Servicio adicional 2 -->
+                <article class="service-item" itemscope itemtype="https://schema.org/Service">
+                    <div aria-hidden="true">
+                        <i class="fas fa-shuttle-van"></i>
+                    </div>
+                    <h3 itemprop="name">Transporte</h3>
+                    <p itemprop="description">Servicio de traslado al aeropuerto y tours locales con choferes profesionales.</p>
+                </article>
+                
+                <!-- Servicio adicional 3 -->
+                <article class="service-item" itemscope itemtype="https://schema.org/Service">
+                    <div aria-hidden="true">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 itemprop="name">Gimnasio</h3>
+                    <p itemprop="description">Moderno gimnasio equipado con tecnología de última generación y vista al mar.</p>
+                </article>
+                
+                <!-- Servicio adicional 4 -->
+                <article class="service-item" itemscope itemtype="https://schema.org/Service">
+                    <div aria-hidden="true">
+                        <i class="fas fa-business-time"></i>
+                    </div>
+                    <h3 itemprop="name">Salas de Reuniones</h3>
+                    <p itemprop="description">Espacios equipados para eventos corporativos y sociales con capacidad hasta 100 personas.</p>
+                </article>
+                
+                <!-- Servicio adicional 5 -->
+                <article class="service-item" itemscope itemtype="https://schema.org/Service">
+                    <div aria-hidden="true">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3 itemprop="name">Guardería</h3>
+                    <p itemprop="description">Servicio de cuidado infantil con personal calificado y actividades recreativas.</p>
+                </article>
+                
+                <!-- Servicio adicional 6 -->
+                <article class="service-item" itemscope itemtype="https://schema.org/Service">
+                    <div aria-hidden="true">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3 itemprop="name">Lavandería</h3>
+                    <p itemprop="description">Servicio express de lavandería y planchado disponible todos los días.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sección de actividades -->
+        <section class="section" aria-labelledby="actividades">
+            <header class="section-title">
+                <h2 id="actividades">Actividades y Experiencias</h2>
+                <p>Descubre las emocionantes actividades que hemos preparado para ti durante tu estadía.</p>
+            </header>
+            
+            <div class="activities-tabs" role="tablist" aria-label="Filtrar actividades">
+                <button class="btn btn-outline active" data-activity="all" role="tab" aria-selected="true">Todas</button>
+                <button class="btn btn-outline" data-activity="adventure" role="tab" aria-selected="false">Aventura</button>
+                <button class="btn btn-outline" data-activity="relaxation" role="tab" aria-selected="false">Relajación</button>
+                <button class="btn btn-outline" data-activity="cultural" role="tab" aria-selected="false">Cultural</button>
+                <button class="btn btn-outline" data-activity="family" role="tab" aria-selected="false">Familia</button>
+            </div>
+            
+            <div class="activities-grid">
+                <!-- Tarjeta de actividad 1 -->
+                <article class="activity-card" itemscope itemtype="https://schema.org/TouristAttraction">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Snorkeling en el Arrecife" itemprop="image">
+                    </div>
+                    <div class="activity-card-content">
+                        <span class="activity-category" itemprop="category">Aventura</span>
+                        <h3 itemprop="name">Snorkeling en el Arrecife</h3>
+                        <p itemprop="description">Explora la vibrante vida marina en nuestro tour guiado de snorkeling.</p>
+                        <div class="activity-footer">
+                            <span class="activity-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <span itemprop="priceCurrency" content="USD">$</span>
+                                <span itemprop="price" content="45">45</span> por persona
+                            </span>
+                            <button class="btn btn-outline" aria-label="Más información sobre Snorkeling">Más info</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Tarjeta de actividad 2 -->
+                <article class="activity-card" itemscope itemtype="https://schema.org/TouristAttraction">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Yoga al Amanecer" itemprop="image">
+                    </div>
+                    <div class="activity-card-content">
+                        <span class="activity-category" itemprop="category">Relajación</span>
+                        <h3 itemprop="name">Yoga al Amanecer</h3>
+                        <p itemprop="description">Clases de yoga en la playa al amanecer para comenzar tu día con energía.</p>
+                        <div class="activity-footer">
+                            <span class="activity-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <span itemprop="priceCurrency" content="USD">$</span>
+                                <span itemprop="price" content="25">25</span> por persona
+                            </span>
+                            <button class="btn btn-outline" aria-label="Más información sobre Yoga">Más info</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Tarjeta de actividad 3 -->
+                <article class="activity-card" itemscope itemtype="https://schema.org/TouristAttraction">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tour Cultural Local" itemprop="image">
+                    </div>
+                    <div class="activity-card-content">
+                        <span class="activity-category" itemprop="category">Cultural</span>
+                        <h3 itemprop="name">Tour Cultural Local</h3>
+                        <p itemprop="description">Descubre la rica historia y tradiciones de nuestra comunidad con guías expertos.</p>
+                        <div class="activity-footer">
+                            <span class="activity-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <span itemprop="priceCurrency" content="USD">$</span>
+                                <span itemprop="price" content="35">35</span> por persona
+                            </span>
+                            <button class="btn btn-outline" aria-label="Más información sobre Tour Cultural">Más info</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content" itemscope itemtype="https://schema.org/Hotel">
+                <div class="footer-column">
+                    <h4>Hotel Pacific Reef</h4>
+                    <p itemprop="description">Un refugio de paz y comodidad frente al mar, donde cada detalle está pensado para tu bienestar.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Enlaces rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="habitaciones.html">Habitaciones</a></li>
+                        <li><a href="servicios.html" aria-current="page">Servicios</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <ul itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                        <li><i class="fas fa-map-marker-alt"></i> <span itemprop="streetAddress">Av. Costera 1234</span>, <span itemprop="addressLocality">Zona Turística</span></li>
+                        <li><i class="fas fa-phone"></i> <span itemprop="telephone">+56 9 1234 5678</span></li>
+                        <li><i class="fas fa-envelope"></i> <span itemprop="email">info@hotelpacificreef.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span itemprop="copyrightYear">2023</span> Hotel Pacific Reef. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modales -->
+    <div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" hidden>
+        <div class="modal-content auth-modal">
+            <div class="modal-header">
+                <h3 id="loginModalTitle">Iniciar Sesión</h3>
+                <button class="close-modal" aria-label="Cerrar modal">&times;</button>
+            </div>
+            <div class="auth-tabs" role="tablist">
+                <button class="auth-tab active" data-tab="guest" role="tab" aria-selected="true">Cliente</button>
+                <button class="auth-tab" data-tab="employee" role="tab" aria-selected="false">Empleado</button>
+                <button class="auth-tab" data-tab="admin" role="tab" aria-selected="false">Administrador</button>
+            </div>
+            <div class="auth-content">
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="login-email">Correo electrónico</label>
+                        <input type="email" id="login-email" class="form-control" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Contraseña</label>
+                        <input type="password" id="login-password" class="form-control" required aria-required="true">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                    <div class="form-footer">
+                        ¿No tienes una cuenta? <a href="#" id="showRegister">Regístrate aquí</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerModalTitle" hidden>
+        <div class="modal-content auth-modal">
+            <div class="modal-header">
+                <h3 id="registerModalTitle">Crear Cuenta</h3>
+                <button class="close-modal" aria-label="Cerrar modal">&times;</button>
+            </div>
+            <div class="auth-content">
+                <form class="auth-form" id="registerForm">
+                    <div class="form-group">
+                        <label for="register-name">Nombre completo</label>
+                        <input type="text" id="register-name" class="form-control" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Correo electrónico</label>
+                        <input type="email" id="register-email" class="form-control" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-phone">Teléfono</label>
+                        <input type="tel" id="register-phone" class="form-control" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Contraseña</label>
+                        <input type="password" id="register-password" class="form-control" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm">Confirmar contraseña</label>
+                        <input type="password" id="register-confirm" class="form-control" required aria-required="true">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+                    <div class="form-footer">
+                        ¿Ya tienes una cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script mejorado con manejo de eventos más robusto
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables para elementos reutilizables
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const loginModal = document.getElementById('loginModal');
+            const registerModal = document.getElementById('registerModal');
+            const showRegister = document.getElementById('showRegister');
+            const showLogin = document.getElementById('showLogin');
+            const closeModals = document.querySelectorAll('.close-modal');
+            
+            // Manejo de tabs de actividades
+            document.querySelectorAll('[data-activity]').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover clase active de todos los botones
+                    document.querySelectorAll('[data-activity]').forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-selected', 'false');
+                    });
+                    
+                    // Añadir clase active al botón clickeado
+                    this.classList.add('active');
+                    this.setAttribute('aria-selected', 'true');
+                    
+                    // Filtrar actividades (implementación básica)
+                    const filter = this.getAttribute('data-activity');
+                    console.log(`Filtrar por: ${filter}`);
+                    // Aquí iría la lógica real de filtrado
+                });
+            });
+            
+            // Manejo de tabs en modales
+            document.querySelectorAll('.auth-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabType = this.getAttribute('data-tab');
+                    
+                    // Actualizar tabs
+                    document.querySelectorAll('.auth-tab').forEach(t => {
+                        t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    this.classList.add('active');
+                    this.setAttribute('aria-selected', 'true');
+                    
+                    // Aquí iría la lógica para cambiar el contenido del formulario según el tipo de usuario
+                    console.log(`Tipo de usuario seleccionado: ${tabType}`);
+                });
+            });
+            
+            // Mostrar modal de login
+            loginBtn.addEventListener('click', function() {
+                loginModal.hidden = false;
+                registerModal.hidden = true;
+                document.body.style.overflow = 'hidden';
+                document.querySelector('.auth-tab[data-tab="guest"]').focus();
+            });
+            
+            // Mostrar modal de registro
+            registerBtn.addEventListener('click', function() {
+                registerModal.hidden = false;
+                loginModal.hidden = true;
+                document.body.style.overflow = 'hidden';
+                document.getElementById('register-name').focus();
+            });
+            
+            // Cambiar a registro desde login
+            showRegister.addEventListener('click', function(e) {
+                e.preventDefault();
+                registerModal.hidden = false;
+                loginModal.hidden = true;
+                document.getElementById('register-name').focus();
+            });
+            
+            // Cambiar a login desde registro
+            showLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.hidden = false;
+                registerModal.hidden = true;
+                document.querySelector('.auth-tab[data-tab="guest"]').focus();
+            });
+            
+            // Cerrar modales
+            closeModals.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.modal').hidden = true;
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Cerrar modal al hacer clic fuera del contenido
+            window.addEventListener('click', function(e) {
+                if (e.target.classList.contains('modal')) {
+                    e.target.hidden = true;
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Manejo de teclado para accesibilidad
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const openModal = document.querySelector('.modal:not([hidden])');
+                    if (openModal) {
+                        openModal.hidden = true;
+                        document.body.style.overflow = '';
+                    }
+                }
+                
+                // Navegación por tabs con teclado
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    const activeTab = document.querySelector('.auth-tab[aria-selected="true"]');
+                    if (activeTab) {
+                        const tabs = Array.from(document.querySelectorAll('.auth-tab'));
+                        const currentIndex = tabs.indexOf(activeTab);
+                        let nextIndex;
+                        
+                        if (e.key === 'ArrowLeft') {
+                            nextIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+                        } else {
+                            nextIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+                        }
+                        
+                        tabs[currentIndex].classList.remove('active');
+                        tabs[currentIndex].setAttribute('aria-selected', 'false');
+                        
+                        tabs[nextIndex].classList.add('active');
+                        tabs[nextIndex].setAttribute('aria-selected', 'true');
+                        tabs[nextIndex].focus();
+                    }
+                }
+            });
+
+            // Manejo del formulario de login
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                // Validación básica (en un caso real, esto sería una llamada al servidor)
+                if (email === 'admin@hotel.com' && password === 'admin123') {
+                    alert('Inicio de sesión exitoso como administrador');
+                    closeAllModals();
+                } else if (email && password) {
+                    alert('Inicio de sesión exitoso como cliente');
+                    closeAllModals();
+                } else {
+                    alert('Por favor complete todos los campos');
+                }
+            });
+
+            // Manejo del formulario de registro
+            document.getElementById('registerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const password = document.getElementById('register-password').value;
+                const confirmPassword = document.getElementById('register-confirm').value;
+                
+                if (password !== confirmPassword) {
+                    alert('Las contraseñas no coinciden');
+                    return;
+                }
+                
+                // Validación básica (en un caso real, esto enviaría los datos al servidor)
+                alert('Registro exitoso. Ahora puede iniciar sesión.');
+                closeAllModals();
+                loginModal.hidden = false;
+                registerModal.hidden = true;
+            });
+
+            // Función para cerrar todos los modales
+            function closeAllModals() {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.hidden = true;
+                });
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>

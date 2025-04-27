@@ -1,7 +1,0 @@
-{
-  "name": "ReservApp",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
