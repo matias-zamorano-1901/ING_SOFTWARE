@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Reservas</title>
+</head>
+<body>
+    <h1>Reserva de Habitaciones</h1>
+    <h1>Bienvenido al Sistema de Reservas</h1>
+    <p>
+        <a href="/admin/">Administración</a> |
+        <a href="/api/">API</a>
+    </p>
+    
+    <!-- Formulario para reservas -->
+    <div id="form-reserva">
+        <h2>Nueva Reserva</h2>
+        <select id="habitacion">
+            <option value="">Seleccione habitación</option>
+        </select>
+        <input type="date" id="fecha-entrada">
+        <input type="date" id="fecha-salida">
+        <button onclick="crearReserva()">Reservar</button>
+    </div>
+
+    <!-- Listado de habitaciones -->
+    <div id="lista-habitaciones">
+        <h2>Habitaciones Disponibles</h2>
+        <ul id="habitaciones-list"></ul>
+    </div>
+
+    <script>
+        // Cargar habitaciones al iniciar
+        document.addEventListener('DOMContentLoaded', cargarHabitaciones);
+
+        async function cargarHabitaciones() {
+            try {
+                const response = await fetch('http://localhost:8000/api/habitaciones/');
+                const habitaciones = await response.json();
+                
+                const select = document.getElementById('habitacion');
+                const ul = document.getElementById('habitaciones-list');
+                
+                habitaciones.forEach(hab => {
+                    // Llenar select
+                    const option = document.createElement('option');
+                    option.value = hab.id;
+                    option.textContent = `Habitación ${hab.id} - ${hab.tipo}`;
+                    select.appendChild(option);
+                    
+                    // Llenar listado
+                    const li = document.createElement('li');
+                    li.textContent = `Habitación ${hab.id}: ${hab.tipo} ($${hab.precio})`;
+                    ul.appendChild(li);
+                });
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function crearReserva() {
+            const habitacionId = document.getElementById('habitacion').value;
+            const fechaEntrada = document.getElementById('fecha-entrada').value;
+            const fechaSalida = document.getElementById('fecha-salida').value;
+            
+            try {
+                const response = await fetch('http://localhost:8000/api/reservar/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')  // Necesario para protección CSRF
+                    },
+                    body: JSON.stringify({
+                        habitacion_id: habitacionId,
+                        fecha_entrada: fechaEntrada,
+                        fecha_salida: fechaSalida
+                    })
+                });
+                
+                const result = await response.json();
+                alert(result.message || 'Reserva creada exitosamente');
+            } catch (error) {
+                alert('Error al crear reserva');
+                console.error(error);
+            }
+        }
+
+        // Función para obtener el token CSRF (requerido por Django)
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>
